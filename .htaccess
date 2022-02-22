@@ -1,0 +1,14 @@
+ #Turn Rewrite Engine On
+RewriteEngine On
+
+#grant http authorization
+RewriteCond %{HTTP:Authorization} ^(.+)$
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+RewriteRule ^signup Routes/signup.php [NC,L]
+RewriteRule ^login Routes/login.php [NC,L]
+RewriteRule ^items Routes/items.php [NC,L]
+ 
